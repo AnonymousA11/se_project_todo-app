@@ -1,4 +1,4 @@
-/*const initialTodos = [
+const initialTodos = [
   {
     id: "7cec7373-681b-49d9-b065-021d61a69d03",
     name: "Read the sprint's theory",
