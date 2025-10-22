@@ -1,7 +1,7 @@
 import {initialTodos, validationConfig} from "../utils/constants.js";
+import Todo from "../components/Todo.js";
 
-console.log(initialTodos);
-console.log(validationConfig);
+
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopup.querySelector(".popup__form");
@@ -18,7 +18,7 @@ const closeModal = (modal) => {
 };
 
 // The logic in this function should all be handled in the Todo class.
-const generateTodo = (data) => {
+const generateTodo = (data) => { /*
   const todoElement = todoTemplate.content
     .querySelector(".todo")
     .cloneNode(true);
@@ -52,7 +52,9 @@ const generateTodo = (data) => {
   });
 
   return todoElement;
-};
+
+  */
+}; 
 
 addTodoButton.addEventListener("click", () => {
   openModal(addTodoPopup);
