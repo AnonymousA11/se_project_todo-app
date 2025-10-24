@@ -4,7 +4,32 @@ class Todo {
     this._templateElement = document.querySelector(selector);
   }
 
+  getView() {
+    this._todoElement = this._templateElement.content
+    .querySelector(".todo")
+    .cloneNode(true);
+  const todoNameEl = this._todoElement.querySelector(".todo__name");
+  const todoDate = this._todoElement.querySelector(".todo__date");
+  const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+
+  todoNameEl.textContent = this._data.name;
+
+    const dueDate = new Date(this._data.date);
+    todoDate.textContent = dueDate.toLocaleDateString();
+
+ this._generateCheckboxEl();
+
+ this._setEventListeners();
+  return this._todoElement;
+  }
+
+
   _setEventListeners(){
+    this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+    this._todoDeleteBtn.addEventListener("click", () => {
+      this._todoElement.remove();
+    });
+
     const todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
     todoCheckboxEl.addEventListener("change", () => {
       this._data.completed= !this._data.completed;
@@ -23,22 +48,7 @@ class Todo {
 
   }
 
-  getView() {
-    this._todoElement = this._templateElement.content
-    .querySelector(".todo")
-    .cloneNode(true);
-  const todoNameEl = this._todoElement.querySelector(".todo__name");
-  const todoDate = this._todoElement.querySelector(".todo__date");
-  const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
-
-  todoNameEl.textContent = this._data.name;
   
-
- this._generateCheckboxEl();
-
-
-  return this._todoElement;
-  }
 }
 
 export default Todo;
