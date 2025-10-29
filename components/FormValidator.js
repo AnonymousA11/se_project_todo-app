@@ -57,11 +57,10 @@ _toggleButtonState = (inputList, buttonElement, settings) => {
 
 _setEventListeners = (formElement, settings) => {
   const inputList = Array.from(
-    formElement.querySelectorAll(settings.inputSelector),
+    formElement.querySelectorAll(this._inputSelector),
   );
   const buttonElement = formElement.querySelector(
-    settings.submitButtonSelector,
-  );
+    this._submitButtonSelector);
 
   this._toggleButtonState(inputList, buttonElement, settings);
 
@@ -76,11 +75,11 @@ _setEventListeners = (formElement, settings) => {
 
 
 enableValidation = (settings) => {
-  const formElement = document.querySelector(settings.formSelector);
+  const formElement = document.querySelector(this._formSelector);
   formElement.addEventListener("submit", (evt) => {
     evt.preventDefault();
   });
-  setEventListeners(formElement, settings);
+  this._setEventListeners(formElement, settings);
 };
 
  resetValidation() {
