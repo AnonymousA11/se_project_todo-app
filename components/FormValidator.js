@@ -74,22 +74,23 @@ _setEventListeners = (formElement, settings) => {
 };
 
 
-enableValidation = (settings) => {
-  const formElement = document.querySelector(this._formSelector);
-  formElement.addEventListener("submit", (evt) => {
+enableValidation() {
+  // attach submit handler and initialize listeners using the provided form element and settings from constructor
+  if (!this._formElement) return;
+  this._formElement.addEventListener("submit", (evt) => {
     evt.preventDefault();
   });
-  this._setEventListeners(formElement, settings);
-};
-
+  this._setEventListeners(this._formElement, this._settings);
+}
  resetValidation() {
     this._inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
+    const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
+      this._hideInputError(this._formElement, inputElement, this._settings);
     });
-    this._toggleButtonState();
+    this._toggleButtonState(this._inputList, buttonElement, this._settings);
   }
 
 }
