@@ -35,27 +35,50 @@ addTodoCloseBtn.addEventListener("click", () => {
 });
 
 addTodoForm.addEventListener("submit", (evt) => {
+
   evt.preventDefault();
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
+  const todo = generateTodo({
+    id: uuidv4(),
+    name: name,
+    completed: false,
+    date: dateInput,
+  });
 
-  // Create a date object and adjust for timezone
-  const date = new Date(dateInput);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+ // Create a date object and adjust for timezone
+    const date = new Date(dateInput);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+    todosList.append(todo);
+
+// Removed unnecessary Enter key handler to avoid unexpected DOM modifications
+    closeModal(addTodoPopup);
+
+    formValidator.resetValidation();
 
 
-  const id = uuidv4();
-  const values = { name, date, id };
-  const todo = generateTodo(values);
-  todosList.append(todo);
-  addTodoForm.reset();
-  closeModal(addTodoPopup);
 });
 
 initialTodos.forEach((item) => {
   const todo = generateTodo(item);
   todosList.append(todo);
 });
+
+
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const openPopup = document.querySelector(".popup_visible");
+    closeModal(openPopup);
+  }
+});
+
+
+
+   
+
+ 
 
 
 const formValidator = new FormValidator(validationConfig, addTodoForm);
