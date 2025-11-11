@@ -64,11 +64,7 @@ _setEventListeners = (formElement, settings) => {
 
   this._toggleButtonState(inputList, buttonElement, settings);
 
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      classList.remove("popup_visible");
-    }
-  });
+  
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
