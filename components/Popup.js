@@ -4,12 +4,9 @@ class Popup {
     this._popupCloseBtn = this._popupElement.querySelector(".popup__close");
   }
 
-  _handleEscapeClose(evt) {
+  _handleEscapeClose = (evt) => {
     if (evt.key === "Escape") {
-      const openPopup = document.querySelector(".popup_visible");
-      if (openPopup) {
-        closeModal(openPopup);
-      }
+      this.close();
     }
   }
 
