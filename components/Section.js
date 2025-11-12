@@ -9,7 +9,7 @@ class Section {
     renderItems(){
         this._items.forEach(item => {
             //call the renderer and pass it the item as argument
-            this._container.append(this._renderer(item));
+            this.addItem(this._renderer(item));
         });
     }
 

@@ -8,7 +8,7 @@ class Popup {
     if (evt.key === "Escape") {
       this.close();
     }
-  }
+  };
 
   open() {
     this._popupElement.classList.add("popup_visible");

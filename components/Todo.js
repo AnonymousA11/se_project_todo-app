@@ -17,7 +17,11 @@ class Todo {
 
     const dueDate = new Date(this._data.date);
     if (!isNaN(dueDate)) {
-      todoDate.textContent = dueDate.toLocaleDateString();
+      todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}`;
     }
 
     this._generateCheckboxEl();
