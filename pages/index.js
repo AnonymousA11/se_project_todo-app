@@ -37,7 +37,6 @@ const addTodoPopup = new PopupWithForm({
 
 addTodoPopup.setEventListeners();
 
-
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
   return todo.getView();
